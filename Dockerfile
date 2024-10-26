@@ -10,8 +10,8 @@ RUN apt-get update && \
   apt-get upgrade -y && \
   rm -rf /var/lib/apt/lists/*
 
-# Salin file package.json terlebih dahulu untuk mempercepat cache install
-COPY package.json ./
+# Salin file package.json dan package-lock.json terlebih dahulu untuk mempercepat cache install
+COPY package.json package-lock.json ./
 
 # Instal semua dependensi Node.js dari package.json
 RUN npm install && npm install qrcode-terminal
