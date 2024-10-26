@@ -10,6 +10,9 @@ RUN apt-get update && \
   apt-get upgrade -y && \
   rm -rf /var/lib/apt/lists/*
 
+# Buat direktori kerja
+WORKDIR /app
+
 # Salin file package.json dan package-lock.json terlebih dahulu untuk mempercepat cache install
 COPY package.json package-lock.json ./
 
