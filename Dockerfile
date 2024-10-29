@@ -10,6 +10,9 @@ RUN apt-get update && \
   apt-get upgrade -y && \
   rm -rf /var/lib/apt/lists/*
 
+# Instal pm2 sebagai global dependency
+RUN npm install -g pm2
+
 # Buat direktori kerja
 WORKDIR /app
 
@@ -28,5 +31,5 @@ RUN chmod -R 755 /app
 # Expose port 5000 untuk aplikasi
 EXPOSE 5000
 
-# Jalankan aplikasi
-CMD ["node", "index.js"]
+# Jalankan aplikasi menggunakan pm2
+CMD ["pm2-runtime", "index.js"]
